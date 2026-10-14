@@ -1,0 +1,76 @@
+/* Vantage — jetons de design (UI/UX System v1.0).
+   Le thème de l'interface est stable : il ne dépend jamais de l'heure du stade. La couleur de marque
+   est injectée depuis src/config/product.ts (--accent) ; aucun composant ne la code en dur.
+   La police Inter (SIL OFL 1.1) est embarquée par src/ui/fonts.ts. */
+
+
+:root {
+  /* couleur */
+  --bg: #07090c;
+  --surface: rgba(13, 16, 21, 0.80);
+  --surface-solid: #0f1318;
+  --surface-elevated: rgba(19, 23, 30, 0.94);
+  --surface-hover: rgba(255, 255, 255, 0.06);
+  --surface-press: rgba(255, 255, 255, 0.1);
+  --text-primary: #f3f6f9;
+  --text-secondary: #a9b4c0;
+  --text-tertiary: #7d8a99;
+  --accent: #ff5a36;
+  --accent-ink: #ffffff;
+  --accent-soft: color-mix(in srgb, var(--accent) 18%, transparent);
+  --success: #3fd6a2;
+  --warning: #f5b841;
+  --danger: #ff5c6c;
+  --info: #4cc9ff;
+  --compare: #4cc9ff;
+  --border: rgba(255, 255, 255, 0.09);
+  --border-strong: rgba(255, 255, 255, 0.2);
+  --focus: #ffffff;
+  --focus-ring: 0 0 0 2px var(--bg), 0 0 0 4px var(--focus);
+  --glass-blur: 18px;
+  --shadow-1: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-2: 0 10px 30px rgba(0, 0, 0, 0.45);
+  --shadow-3: 0 24px 60px rgba(0, 0, 0, 0.55);
+
+  /* espacement (base 4) */
+  --s-1: 4px; --s-2: 8px; --s-3: 12px; --s-4: 16px; --s-5: 24px; --s-6: 32px; --s-7: 48px;
+  /* rayons */
+  --r-xs: 6px; --r-sm: 10px; --r-md: 14px; --r-lg: 18px; --r-xl: 24px; --r-pill: 999px;
+  /* typographie (rem : suit le zoom texte jusqu'à 200 %) */
+  --font: 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --fs-2xs: 0.6875rem; --fs-xs: 0.75rem; --fs-sm: 0.8125rem; --fs-md: 0.875rem; --fs-lg: 1rem; --fs-xl: 1.25rem; --fs-2xl: 1.625rem; --fs-3xl: 2.25rem;
+  --lh-tight: 1.15; --lh: 1.4;
+  --track-caps: 0.08em;
+  /* mouvement : trois familles seulement */
+  --t-fast: 90ms; --t-ui: 180ms; --t-slow: 320ms;
+  --t-seat: 500ms; --t-major: 900ms;
+  --ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-spring: cubic-bezier(0.34, 1.3, 0.64, 1);
+  /* plans */
+  --z-world: 10; --z-hud: 20; --z-card: 30; --z-sheet: 40; --z-panel: 50; --z-overlay: 60; --z-presenter: 70; --z-reveal: 80; --z-lab: 85; --z-dialog: 90; --z-toast: 95; --z-loader: 100;
+
+  /* gabarit (desktop par défaut ; surchargé par layout) */
+  --mx: 24px; --mt: 16px; --mb: 24px;
+  --hud-h: 40px; --dock-h: 56px; --card-w: clamp(300px, 24vw, 360px); --mini-w: 160px; --mini-h: 112px; --target: 36px;
+  --safe-t: env(safe-area-inset-top, 0px); --safe-b: env(safe-area-inset-bottom, 0px);
+  --safe-l: env(safe-area-inset-left, 0px); --safe-r: env(safe-area-inset-right, 0px);
+}
+
+#app[data-layout='mobile'] { --mx: 12px; --mt: 10px; --mb: 12px; --hud-h: 44px; --dock-h: 64px; --target: 44px; --mini-w: 112px; --mini-h: 80px; }
+#app[data-layout='landscape'] { --mx: 12px; --mt: 8px; --mb: 8px; --hud-h: 44px; --dock-h: 64px; --target: 44px; --card-w: 300px; --mini-w: 112px; --mini-h: 80px; }
+#app[data-touch='1'] { --target: 44px; }
+/* tablette tactile : logique mobile, gabarit spacieux (§37) */
+#app[data-device='tablet'] { --hud-h: 44px; --dock-h: 64px; --mx: 20px; }
+
+/* contraste élevé : surfaces opaques, bordures franches, textes secondaires éclaircis */
+#app[data-contrast='high'] {
+  --surface: #05070a; --surface-elevated: #0b0e12; --surface-solid: #05070a;
+  --text-secondary: #e2e8ee; --text-tertiary: #c3ccd6;
+  --border: rgba(255, 255, 255, 0.55); --border-strong: #ffffff;
+  --glass-blur: 0px;
+}
+/* mouvement réduit (système ou réglage) */
+#app[data-motion='reduced'] { --t-fast: 1ms; --t-ui: 1ms; --t-slow: 1ms; }
+html[data-text='lg'] { font-size: 112.5%; }
+html[data-text='xl'] { font-size: 131.25%; }
