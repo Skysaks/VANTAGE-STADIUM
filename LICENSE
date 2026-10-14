@@ -1,0 +1,59 @@
+VANTAGE
+Copyright (c) 2026 Florian Iglesias. All rights reserved.
+
+This repository, including its source code, venue generator, rendering and
+environment engines, interface design, text, graphics and documentation
+(together, the "Work"), is the exclusive property of Florian Iglesias and is
+protected by copyright law (French Code de la propriété intellectuelle and
+international treaties), except for the third-party components listed below.
+
+The Work is published publicly for portfolio and reference purposes only.
+No licence or right is granted, expressly or by implication, to any person
+other than the copyright holder. In particular, without the prior written
+permission of the copyright holder, you may not:
+
+  - copy, reproduce or mirror the Work, in whole or in part, outside the
+    viewing and forking features that GitHub's Terms of Service require for
+    public repositories;
+  - modify, adapt, translate or create derivative works from the Work;
+  - distribute, publish, sublicense, sell, rent or otherwise make the Work
+    available to third parties;
+  - deploy, host or operate the Work, or any derivative of it, as a service,
+    application or product, whether commercial or not;
+  - reuse the Work, its data or its algorithms, including to train or
+    evaluate machine-learning models.
+
+Viewing the source on GitHub does not grant any of the rights above.
+
+Third-party components keep their own licences and are not covered by the
+reservation above:
+  - three.js, MIT License, Copyright (c) 2010-2024 three.js authors
+    (bundled in every built file and in docs/baseline/baseline-engine.html);
+  - Inter typeface, SIL Open Font License 1.1, Copyright (c) 2016 The Inter
+    Project Authors.
+Their licence texts are reproduced at the top of every built file; see also
+docs/LICENSES.md.
+
+Stadiums, clubs, prices and availability shown by the Work are fictitious.
+
+THE WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED. IN NO EVENT SHALL THE COPYRIGHT HOLDER BE LIABLE FOR ANY CLAIM,
+DAMAGES OR OTHER LIABILITY ARISING FROM THE WORK OR ITS USE.
+
+Permission requests: open an issue on https://github.com/Skysaks/VANTAGE-STADIUM
+or contact the copyright holder through his GitHub profile.
+
+--------------------------------------------------------------------------------
+
+Copyright (c) 2026 Florian Iglesias. Tous droits réservés.
+
+Ce dépôt (code source, générateur de stades, moteurs de rendu et
+d'environnement, conception de l'interface, textes, visuels et documentation)
+est la propriété exclusive de Florian Iglesias, à l'exception des composants
+tiers cités ci-dessus (three.js sous licence MIT, police Inter sous SIL OFL
+1.1), qui conservent leur propre licence. Il est rendu public à titre de
+portfolio uniquement. Aucune licence n'est concédée : toute reproduction,
+modification, distribution, exploitation ou réutilisation, totale ou
+partielle, commerciale ou non, est interdite sans autorisation écrite
+préalable de l'auteur (articles L.122-4 et L.335-2 du Code de la propriété
+intellectuelle).

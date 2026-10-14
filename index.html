@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, interactive-widget=resizes-content" />
+  <meta name="theme-color" content="#07090C" />
+  <meta name="color-scheme" content="dark" />
+  <meta name="description" content="Vantage : voyez depuis n’importe quelle place d’un stade avant d’acheter." />
+  <title>Vantage</title>
+</head>
+<body>
+  <div id="app" data-layout="desktop" data-mode="overview">
+    <canvas id="c" role="application" tabindex="0" aria-label="Stade en 3D" aria-describedby="sceneHelp"></canvas>
+    <p id="sceneHelp" class="sr-only">Flèches : choisir une tribune, une section ou une place. Entrée : valider. Échap : revenir. Touche B : parcourir toutes les places sans la 3D. Point d’interrogation : raccourcis.</p>
+    <div id="world" class="world" aria-hidden="true"></div>
+
+    <header id="tophud" class="tophud ui-min"></header>
+    <button id="evchip" class="evchip surface ui-min" type="button" aria-haspopup="dialog" hidden></button>
+    <div id="flash" class="flash" aria-hidden="true"></div>
+    <button id="zoomchip" class="zoomchip surface ui-min" type="button" aria-label="Zoom actif : revenir à la vue réelle" hidden></button>
+    <div id="splitlab" class="splitlab" aria-hidden="true" hidden></div>
+    <nav id="dock" class="dock surface ui-min" aria-label="Actions"></nav>
+    <div id="facts" class="facts surface ui-min" hidden></div>
+    <button id="recenter" class="floatbtn recenter surface ui-min" type="button" hidden><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="7"/><circle cx="12" cy="12" r="2"/><path d="M12 2.5v3M12 18.5v3M2.5 12h3M18.5 12h3"/></svg><span class="lbl">Recentrer</span></button>
+    <button id="undo" class="floatbtn undo surface-2 ui-min" type="button" hidden><svg class="ic" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 7L4.5 11.5 9 16"/><path d="M5 11.5h9a5.5 5.5 0 0 1 0 11h-2"/></svg><span class="lbl">Annuler</span></button>
+    <div id="envstrip" class="envstrip surface-2" role="group" aria-label="Conditions rapides" hidden></div>
+    <div id="cands" class="cands surface-2" role="group" aria-label="Places proches du toucher" hidden></div>
+    <div id="peek" class="peek surface-2" aria-hidden="true" hidden></div>
+    <button id="pip" class="pip" type="button" hidden><span class="ab b">B</span></button>
+    <div id="minimap" class="minimap surface ui-min off" aria-hidden="true"><canvas id="miniCanvas"></canvas></div>
+    <aside id="card" class="seatcard surface" aria-labelledby="cardTitle"></aside>
+    <aside id="panel" class="panel surface-2" role="dialog" aria-labelledby="panelTitle" aria-hidden="true"></aside>
+    <section id="sheet" class="sheet surface-2" aria-hidden="true" aria-label="Votre place"><button type="button" id="sheetGrab" class="grab" aria-label="Agrandir la fiche" aria-expanded="false"></button><div id="sheetBody" class="body"></div></section>
+    <div id="movehud" class="movehud surface" role="group" aria-label="Se déplacer"></div>
+    <div id="compare" class="comparetray surface-2" role="region" aria-label="Comparaison"></div>
+    <div id="ghost" class="ghostcard surface-2" role="dialog" aria-label="Aperçu de la place"></div>
+    <div id="hint" class="hint surface" role="status"></div>
+    <div id="tip" class="tip surface-2" aria-hidden="true"></div>
+    <div id="toast" class="toast surface-2" role="status"></div>
+    <div id="caption" class="caption" aria-live="polite"></div>
+    <button id="labBtn" class="lab-btn surface" data-only="lab" hidden>LAB</button>
+
+    <div id="veil" class="veil"></div>
+    <div id="reveal" class="reveal" aria-live="polite">
+      <div id="rvTitle" class="rv-title"></div>
+      <button id="rvSkip" class="rv-skip btn surface" type="button">Passer</button>
+      <div id="rvDone" class="rv-done surface-2" role="dialog" aria-label="Votre place"></div>
+    </div>
+
+    <div id="presenter" class="presenter surface-2" data-only="presentation lab" role="region" aria-label="Commandes de présentation"></div>
+    <aside id="lab" class="lab surface-2" data-only="lab" role="complementary" aria-label="Experience Lab"></aside>
+    <div id="dialog" class="dialog" role="dialog" aria-modal="true" aria-labelledby="dlgTitle"><div id="dialogBox" class="box surface-2"></div></div>
+
+    <div id="recover" class="recover surface-2" role="alertdialog" aria-label="Reprise"><p>Reprise de l’affichage…</p><button id="recoverBtn" class="btn primary" type="button">Recharger la vue</button></div>
+    <div id="fatal" class="fatal" role="alert"></div>
+    <div id="loader" class="loader" aria-live="polite">
+      <div id="loaderMark" class="mark"></div>
+      <div id="loaderWord" class="word">VANTAGE</div>
+      <svg class="sil" viewBox="0 0 200 64" aria-hidden="true"><path d="M10 50 C 30 20, 170 20, 190 50 M10 50 L190 50 M30 50 C 45 32, 155 32, 170 50 M60 50 L60 40 M100 50 L100 34 M140 50 L140 40"/></svg>
+      <div id="loaderMsg" class="msg">Préparation de votre vue…</div>
+    </div>
+    <div id="live" class="sr-only" aria-live="polite"></div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+</html>

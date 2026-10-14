@@ -1,0 +1,27 @@
+# dependencies
+node_modules
+
+# builds (regenerate with `npm run build`)
+dist
+*.tsbuildinfo
+
+# environment and secrets (never commit)
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# test output
+tests/shots
+docs/baseline/*.png
+__pycache__/
+
+# logs, archives, OS / editor files
+*.log
+*.zip
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea

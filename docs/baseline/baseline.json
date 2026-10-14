@@ -1,0 +1,131 @@
+{
+ "A": {
+  "loadMs": 1101,
+  "seats": 54652,
+  "overview": {
+   "fps": 60,
+   "frameMs": 16,
+   "calls": 87,
+   "triangles": 597173,
+   "seats": 54652,
+   "visibleSeats": 54652,
+   "crowd": 44768,
+   "memoryMB": 0,
+   "geometries": 53,
+   "textures": 7,
+   "camera": "STADIUM_ORBIT",
+   "profile": "high (auto)"
+  },
+  "pov": {
+   "fps": 15.98241933872963,
+   "frameMs": 62.56874999999127,
+   "calls": 63,
+   "triangles": 594405,
+   "seats": 54652,
+   "visibleSeats": 22798,
+   "crowd": 44768,
+   "memoryMB": 0,
+   "geometries": 53,
+   "textures": 7,
+   "camera": "SEAT_POV",
+   "profile": "high (auto)"
+  }
+ },
+ "B": {
+  "loadMs": 15407,
+  "seats": 23112,
+  "overview": {
+   "fps": 10,
+   "frameMs": 100,
+   "calls": 47,
+   "triangles": 160392,
+   "seats": 23112,
+   "visibleSeats": 10440,
+   "crowd": 0,
+   "memoryMB": 0,
+   "geometries": 52,
+   "textures": 5,
+   "camera": "SEAT_POV",
+   "profile": "balanced (auto)"
+  },
+  "pov": {
+   "fps": 10,
+   "frameMs": 100,
+   "calls": 95,
+   "triangles": 198156,
+   "seats": 23112,
+   "visibleSeats": 23112,
+   "crowd": 14152,
+   "memoryMB": 0,
+   "geometries": 78,
+   "textures": 8,
+   "camera": "STADIUM_ORBIT",
+   "profile": "balanced (auto)"
+  }
+ },
+ "C": {
+  "loadMs": 8613,
+  "seats": 79348,
+  "overview": {
+   "fps": 11.880011880012153,
+   "frameMs": 84.17499999999806,
+   "calls": 87,
+   "triangles": 818536,
+   "seats": 79348,
+   "visibleSeats": 79348,
+   "crowd": 48271,
+   "memoryMB": 0,
+   "geometries": 101,
+   "textures": 9,
+   "camera": "STADIUM_ORBIT",
+   "profile": "balanced (auto)"
+  },
+  "pov": {
+   "fps": 10.89001089001114,
+   "frameMs": 91.82727272727061,
+   "calls": 69,
+   "triangles": 659646,
+   "seats": 79348,
+   "visibleSeats": 79348,
+   "crowd": 28960,
+   "memoryMB": 0,
+   "geometries": 101,
+   "textures": 9,
+   "camera": "STADIUM_ORBIT",
+   "profile": "low (auto)"
+  }
+ },
+ "D": {
+  "loadMs": 15303,
+  "seats": 42441,
+  "overview": {
+   "fps": 10.956720952239166,
+   "frameMs": 91.26818181817758,
+   "calls": 38,
+   "triangles": 58609,
+   "seats": 42441,
+   "visibleSeats": 17284,
+   "crowd": 0,
+   "memoryMB": 0,
+   "geometries": 104,
+   "textures": 6,
+   "camera": "SEAT_POV",
+   "profile": "low (auto)"
+  },
+  "pov": {
+   "fps": 11.662374265026664,
+   "frameMs": 85.74583333333915,
+   "calls": 80,
+   "triangles": 351207,
+   "seats": 42441,
+   "visibleSeats": 42441,
+   "crowd": 15186,
+   "memoryMB": 0,
+   "geometries": 133,
+   "textures": 9,
+   "camera": "STADIUM_ORBIT",
+   "profile": "low (auto)"
+  }
+ },
+ "errors": []
+}
