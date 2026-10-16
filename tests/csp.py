@@ -8,7 +8,7 @@ import sys
 from playwright.sync_api import sync_playwright
 from harness import ARGS, ROOT
 
-FILES = ['vantage.html', 'vantage-presentation.html', 'vantage-lab.html']
+FILES = ['vantage.html', 'vantage-presentation.html', 'vantage-lab.html', '../docs/demo/index.html', '../docs/demo/presentation.html']
 QUERIES = [
     '',
     'v=constructor&event=__proto__&reveal=toString&style=x&t=99999',

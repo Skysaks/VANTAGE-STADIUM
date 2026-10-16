@@ -1,7 +1,11 @@
-# Vantage
+# Vantage — voir sa place avant de l'acheter
+
+**Démonstration** : [version publique](https://skysaks.github.io/VANTAGE-STADIUM/demo/) · [version présentation](https://skysaks.github.io/VANTAGE-STADIUM/demo/presentation.html) (scénarios 01–07, raccourcis). Chrome ou Edge récents, bureau ou téléphone. Hors ligne possible : chaque fichier de `docs/demo/` est autonome. La démo n'est en ligne que tant que le dépôt est public (GitHub Pages, servi depuis `/docs`) ; elle se régénère avec `npm run demo`.
+
+![Vantage sur téléphone : vue d'ensemble, place, vue siège, comparaison](docs/mobile_reference.jpg)
 
 > © 2026 Florian Iglesias — Tous droits réservés. Ce dépôt est public à titre de portfolio uniquement.
-> Aucune licence n'est concédée : copie, modification, distribution ou exploitation interdites sans accord écrit. Voir [LICENSE](LICENSE).
+> Aucune licence n'est concédée : copie, modification, distribution ou exploitation interdites sans accord écrit ; l'essai de la démonstration dans un navigateur est permis. Voir [LICENSE](LICENSE).
 
 > Nom de travail. Le nom, le logo et les couleurs viennent de `src/config/product.ts` : le moteur ne contient aucune marque.
 
@@ -24,6 +28,7 @@ Chaque construction tient dans **un seul fichier HTML** : hors ligne, sans serve
 npm install
 npm run dev          # http://localhost:5173 (saveur lab) ; sur un téléphone du même réseau : npm run dev -- --host
 npm run build        # dist/vantage.html · vantage-presentation.html · vantage-lab.html + contrôle de séparation
+npm run demo         # reconstruit puis copie les versions publique et présentation dans docs/demo/ (GitHub Pages)
 ```
 
 | Fichier | Pour qui | Taille |
@@ -61,6 +66,7 @@ Clavier : flèches, Entrée, Échap, `M` déplacer, `C` comparer, `I` infos, `B`
 
 ## Statut juridique — à lire avant tout usage commercial
 
+- **Licence** : aucune licence open source. Code et documentation © Florian Iglesias, tous droits réservés ([LICENSE](LICENSE)) ; sécurité : [SECURITY.md](SECURITY.md).
 - **Aucun code, actif ni structure** du dépôt tiers `thebuggeddev/football-stadium(-kimi)` (PolyForm Noncommercial 1.0.0) n'a été repris.
 - **Composants tiers embarqués** : three.js (MIT) et la police Inter (SIL OFL 1.1), textes de licence en tête de chaque fichier construit. Ni image, ni modèle 3D, ni son, ni police externe : tout est généré par le code.
 - **Limite honnête** : le code a été écrit dans une session qui avait lu le dépôt tiers pendant l'audit initial. Ce n'est donc **pas une salle blanche stricte** au sens procédural. Avant une exploitation commerciale : validation par un avocat et, si elle l'exige, réécriture des modules d'ambiance (foule, joueurs, jour/nuit) dans une session neuve. Détail : `docs/LICENSES.md`.

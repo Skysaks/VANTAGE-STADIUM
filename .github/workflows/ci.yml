@@ -32,3 +32,9 @@ jobs:
       - run: npm audit --omit=dev --audit-level=low
       - run: npm audit --audit-level=critical
       - run: npm run build # typecheck + 3 builds + public/presentation/lab separation check
+      - name: Published demo (docs/demo) is hardened and Lab-free
+        run: |
+          for f in docs/demo/index.html docs/demo/presentation.html; do
+            grep -q 'http-equiv="Content-Security-Policy"' "$f" || { echo "::error::$f sans CSP : lancer npm run demo"; exit 1; }
+            if grep -qE 'Experience Lab|id="lab"' "$f"; then echo "::error::$f contient le Lab"; exit 1; fi
+          done

@@ -1,8 +1,8 @@
 {
-  "name": "vantage",
+  "name": "vantage-stadium",
   "private": true,
   "version": "3.1.0",
-  "description": "Vantage — see the view from any seat of a stadium before buying. Single-file 3D web experience.",
+  "description": "Vantage : voir depuis n’importe quelle place d’un stade avant d’acheter (démonstrateur 3D, données fictives).",
   "author": "Florian Iglesias",
   "license": "UNLICENSED",
   "repository": {
@@ -18,7 +18,8 @@
     "typecheck": "tsc --noEmit",
     "build": "tsc --noEmit && node scripts/build.mjs",
     "build:lab": "VANTAGE_BUILD=lab VANTAGE_OUT=dist/.lab vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "demo": "npm run build && node scripts/demo.mjs"
   },
   "dependencies": {
     "@fontsource/inter": "^5.3.0",

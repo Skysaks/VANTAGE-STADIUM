@@ -25,6 +25,10 @@ permission of the copyright holder, you may not:
 
 Viewing the source on GitHub does not grant any of the rights above.
 
+Permitted without further request: viewing the source code, and opening the
+published demonstration (docs/demo/, or its GitHub Pages address) in a web
+browser for personal evaluation.
+
 Third-party components keep their own licences and are not covered by the
 reservation above:
   - three.js, MIT License, Copyright (c) 2010-2024 three.js authors
@@ -52,7 +56,8 @@ d'environnement, conception de l'interface, textes, visuels et documentation)
 est la propriété exclusive de Florian Iglesias, à l'exception des composants
 tiers cités ci-dessus (three.js sous licence MIT, police Inter sous SIL OFL
 1.1), qui conservent leur propre licence. Il est rendu public à titre de
-portfolio uniquement. Aucune licence n'est concédée : toute reproduction,
+portfolio uniquement ; la consultation du code et l'essai de la démonstration
+dans un navigateur sont permis. Aucune autre licence n'est concédée : toute reproduction,
 modification, distribution, exploitation ou réutilisation, totale ou
 partielle, commerciale ou non, est interdite sans autorisation écrite
 préalable de l'auteur (articles L.122-4 et L.335-2 du Code de la propriété

@@ -17,6 +17,9 @@ and issues in third-party dependencies already tracked upstream.
 
 ## What is already in place
 
+- Static, self-contained pages: no server, no account, no cookie, no secret in the repository.
+  The only data kept in the browser are saved seats (`localStorage`) and a few session
+  preferences (`sessionStorage`), always with an in-memory fallback.
 - No server, no account, no network: each build is a single offline HTML file. A
   Content-Security-Policy in every built file forbids loading or sending anything over the network.
 - URL parameters (stadium, seat, event, reveal, time…) are matched against known values only;
@@ -26,3 +29,9 @@ and issues in third-party dependencies already tracked upstream.
 - The public build is checked at build time to contain no Lab or presenter controls.
 - The development server listens on localhost only.
 - Dependencies are watched by Dependabot and `npm audit` runs in CI.
+- Known open advisory: `braces` (GHSA-vfj7-8cjw-p6xm, denial of service on deeply nested glob
+  patterns), pulled in at build time by `vite-plugin-singlefile` → `micromatch`. No upstream fix;
+  not reachable here (the patterns come from the project configuration, never from input) and
+  absent from the built files.
+- The GitHub Pages demo (`docs/demo/`) is rebuilt from the same hardened sources (`npm run demo`)
+  and carries the same Content-Security-Policy.
