@@ -2,7 +2,7 @@ import * as THREE from 'three';
 import type { VenueModel } from '../venue/model';
 
 /**
- * Micro-détails là où le regard se pose (addendum mobile §85–92) : signalétique de section, panneaux SORTIE au-dessus
+ * Micro-détails là où le regard se pose : signalétique de section, panneaux SORTIE au-dessus
  * des vomitoires, portes extérieures, éclairage d'allées la nuit. Tout est instancié (quelques appels de dessin),
  * le texte vient d'un unique atlas de petite taille (2 Mo au plus).
  */
@@ -145,7 +145,7 @@ export function buildDetails(v: VenueModel): DetailParts {
   group.add(portalMesh);
   disposables.push(pg, pm);
 
-  // nez de marche jaunes dans les allées (§85) : une bande par marche, 2 triangles, un seul appel de dessin
+  // nez de marche jaunes dans les allées : une bande par marche, 2 triangles, un seul appel de dessin
   const ng = new THREE.PlaneGeometry(1, 1); ng.rotateX(-Math.PI / 2);
   const nm = new THREE.MeshLambertMaterial({ color: '#b8952e' });
   const noseMesh = new THREE.InstancedMesh(ng, nm, Math.max(1, noses.length));
@@ -182,7 +182,7 @@ export function buildDetails(v: VenueModel): DetailParts {
 }
 
 /**
- * Personnel au bord du terrain (§91–92) : caméras de télévision, photographes derrière les buts, stewards en gilet.
+ * Personnel au bord du terrain : caméras de télévision, photographes derrière les buts, stewards en gilet.
  * Silhouettes très simples (corps, tête, caméra) : elles donnent l'échelle, sans simuler une foule de personnel.
  */
 export function buildStaff(v: VenueModel): { group: THREE.Group; dispose(): void } {

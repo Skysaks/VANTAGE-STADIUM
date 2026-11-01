@@ -425,7 +425,7 @@ export class Engine {
     this.surroundings?.update(1 - L.daylight, L.wet);
     const nightK = L.lights * (1 - L.daylight);
     this.details?.setNight(nightK);
-    // ballon lisible de loin (§93) : au plus ×1,7 au-delà de ~85 m, jamais caricatural
+    // ballon lisible de loin : au plus ×1,7 au-delà de ~85 m, jamais caricatural
     if (this.players) {
       const d = this.camera.position.distanceTo(this.players.ballPosition);
       this.players.setBallAssist(Math.max(1, Math.min(1.7, d / 50)), nightK);

@@ -1,7 +1,7 @@
 import * as THREE from 'three';
 
 /**
- * Étiquettes dans l'espace écran, ancrées à des points du monde (§41–44). Jamais des milliers : l'application ne déclare
+ * Étiquettes dans l'espace écran, ancrées à des points du monde. Jamais des milliers : l'application ne déclare
  * que les étiquettes utiles au contexte. Chaque image : projection, mise à l'échelle bornée selon la distance,
  * occultation (rien n'est affiché à travers le béton), collisions résolues par priorité, plafond de densité.
  * Les positions sont écrites directement dans les transforms (aucun rendu de composant par image).
@@ -9,7 +9,7 @@ import * as THREE from 'three';
 export interface WorldLabel {
   id: string; pos: THREE.Vector3; text: string; kind: 'stand' | 'section' | 'pin' | 'pinB' | 'tag' | 'badge';
   sub?: string; minDist?: number; maxDist?: number; act?: string; data?: string;
-  /** Priorité (§43) : 5 sélection, 4 recommandation, 3 survol, 2 section / tribune, 1 autre. */
+  /** Priorité : 5 sélection, 4 recommandation, 3 survol, 2 section / tribune, 1 autre. */
   prio?: number;
   /** Étiquette en taille fixe (épingles) : pas de mise à l'échelle avec la distance. */
   fixed?: boolean;

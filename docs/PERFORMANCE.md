@@ -1,6 +1,6 @@
 # Performance
 
-## Budgets (cibles du brief)
+## Budgets
 
 | Cible | Images/s | Règle |
 |---|---|---|
@@ -12,7 +12,7 @@ Priorité de rendu quand le budget manque (ordre de sacrifice inverse) : caméra
 
 ## Gestionnaire adaptatif
 
-`engine/Quality.ts` : temps d'image mesuré sur des fenêtres de 2 s, avec deux étages de réglage (addendum mobile §78, §81) :
+`engine/Quality.ts` : temps d'image mesuré sur des fenêtres de 2 s, avec deux étages de réglage :
 
 1. **D'abord la résolution interne de la 3D** : ×1, puis ×0,85, puis ×0,72, dès la **première** fenêtre lente. Les pixels CSS de l'interface ne changent pas : le texte et les commandes restent nets.
 2. **Ensuite le profil** : descente d'un cran après **deux** fenêtres lentes, quand la résolution est déjà au minimum.
@@ -21,9 +21,9 @@ La remontée se fait dans l'ordre inverse (la résolution d'abord, puis le profi
 
 Le plafond est le profil de départ (High sur bureau, Mobile sur écran tactile). Un choix manuel (Lab) désactive l'automatique. Ultra (bloom, DPR 2) n'est jamais activé automatiquement.
 
-**Palier d'appareil (§77).** Il est estimé au démarrage d'après la mémoire déclarée, le nombre de cœurs et le GPU (`WEBGL_debug_renderer_info`). Il plafonne la densité de pixels : 2 (haut de gamme), 1,5 (milieu de gamme), 1,2 (entrée de gamme). Jamais 3. Un téléphone d'entrée de gamme démarre directement au profil Low.
+**Palier d'appareil.** Il est estimé au démarrage d'après la mémoire déclarée, le nombre de cœurs et le GPU (`WEBGL_debug_renderer_info`). Il plafonne la densité de pixels : 2 (haut de gamme), 1,5 (milieu de gamme), 1,2 (entrée de gamme). Jamais 3. Un téléphone d'entrée de gamme démarre directement au profil Low.
 
-**Mode léger (§82).** Choisi dans « Plus », ou par `?lite=1`, ou automatiquement si le système demande l'économie de données (`navigator.connection.saveData`) : profil Low (pas d'ombres, foule 45 %, pluie 30 %, abords simplifiés, DPR ≤ 1). Le choix de place reste identique.
+**Mode léger.** Choisi dans « Plus », ou par `?lite=1`, ou automatiquement si le système demande l'économie de données (`navigator.connection.saveData`) : profil Low (pas d'ombres, foule 45 %, pluie 30 %, abords simplifiés, DPR ≤ 1). Le choix de place reste identique.
 
 | Profil | DPR max | Ombres | Foule | Pluie | Abords | Bloom |
 |---|---|---|---|---|---|---|

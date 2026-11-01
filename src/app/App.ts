@@ -39,7 +39,7 @@ const PANEL_ANCHOR: Record<string, string> = {
   explore: 'dock', find: 'dock', views: 'dock', pov: 'dock', browser: 'center',
 };
 
-/** Préférences de session (§73) : conservées au rechargement de l'onglet, jamais au-delà. */
+/** Préférences de session : conservées au rechargement de l'onglet, jamais au-delà. */
 function sessionGet<T>(k: string, d: T): T { try { const v = sessionStorage.getItem(`vantage.${k}`); return v === null ? d : (JSON.parse(v) as T); } catch { return d; } }
 function sessionSet(k: string, v: unknown) { try { sessionStorage.setItem(`vantage.${k}`, JSON.stringify(v)); } catch { /* stockage indisponible : mémoire seule */ } }
 
@@ -87,7 +87,7 @@ export class App {
   device: Device = 'desktop';
   narrow = false; short = false;
   touch = false;
-  /** Places récentes de la session (§70) et comparaison mise de côté (§72). */
+  /** Places récentes de la session et comparaison mise de côté. */
   recent: number[] = [];
   parked: { a: number; b: number } | null = null;
   split = false;
@@ -148,7 +148,7 @@ export class App {
     this.insets = new ViewportInsets(this.el.app);
     this.insets.onChange = (i) => this.d.setInsets(i);
     this.world = new WorldOverlay(this.el.world);
-    // une étiquette n'est jamais montrée à travers une tribune ou un toit (§42) : on échantillonne le segment
+    // une étiquette n'est jamais montrée à travers une tribune ou un toit : on échantillonne le segment
     const P = new THREE.Vector3();
     this.world.occluded = (from, to) => {
       if (this.d.isPOV) return false;
@@ -361,8 +361,8 @@ export class App {
 
   /**
    * Gabarit : la mise en page suit la taille (téléphone portrait / paysage / grand écran) ; l'interaction suit le
-   * pointeur (tactile sans survol = logique mobile, même sur tablette, §37). Hauteur courte (< 700 px) et largeur
-   * étroite (≤ 350 px) resserrent l'interface (§35–36).
+   * pointeur (tactile sans survol = logique mobile, même sur tablette). Hauteur courte (< 700 px) et largeur
+   * étroite (≤ 350 px) resserrent l'interface.
    */
   detectLayout() {
     const w = this.viewportOverride?.w ?? innerWidth, h = this.viewportOverride?.h ?? innerHeight;
@@ -380,7 +380,7 @@ export class App {
     if (changed) this.render();
     this.sheet?.refresh();
     this.insets.schedule();
-    // rotation, redimensionnement : on recadre seulement (stade, place, mode, ambiance et comparaison sont conservés, §30)
+    // rotation, redimensionnement : on recadre seulement (stade, place, mode, ambiance et comparaison sont conservés)
     const aspect = w / Math.max(1, h);
     if (this.lastAspect && Math.abs(aspect - this.lastAspect) > 0.05) {
       clearTimeout(this.reframeTimer);
@@ -444,7 +444,7 @@ export class App {
     this.onRender.forEach((f) => f());
   }
 
-  /** Identifiant compact de position (§45) : « Tribune Nord », « Section 104 », « 104 · R7 · P18 ». */
+  /** Identifiant compact de position : « Tribune Nord », « Section 104 », « 104 · R7 · P18 ». */
   private context(): { html: string; label: string } {
     const v = this.e.venue!;
     const m = this.modes.mode;
@@ -502,7 +502,7 @@ export class App {
     const show = this.seat >= 0 && (m === 'seat' || ((m === 'pov') && this.infoOpen));
     const card = this.el.card, sheet = this.el.sheet;
     if (!show) {
-      // le focus ne doit jamais tomber dans le canevas par accident (§102) : on le rend au dock ou au HUD
+      // le focus ne doit jamais tomber dans le canevas par accident : on le rend au dock ou au HUD
       const had = card.contains(document.activeElement) || sheet.contains(document.activeElement);
       card.classList.remove('on'); card.setAttribute('aria-hidden', 'true');
       sheet.classList.remove('on'); sheet.setAttribute('aria-hidden', 'true');
@@ -587,7 +587,7 @@ export class App {
       <h3 class="h3">Moment du match</h3><div class="chips">${([['warmup', 'Échauffement'], ['openplay', 'Jeu'], ['corner', 'Corner'], ['freekick', 'Coup franc'], ['penalty', 'Penalty']] as Array<[MatchState, string]>).map(([k, l]) => `<button type="button" class="chip" data-act="match:${k}">${l}</button>`).join('')}</div>`;
   }
 
-  /** Étiquettes contextuelles : peu nombreuses, priorisées, occultées par les structures (§41–44). */
+  /** Étiquettes contextuelles : peu nombreuses, priorisées, occultées par les structures. */
   renderWorld() {
     if (!this.e.venue) return;
     const v = this.e.venue!;
@@ -607,7 +607,7 @@ export class App {
     } else if (m === 'section' || m === 'seat') {
       if (this.seat >= 0) pin(this.seat, 'pin', `R${v.row[this.seat] + 1} · P${v.num[this.seat]}`);
       if (this.section >= 0) {
-        // badges en mots sur les places recommandées de la section (§11) : un seul par place, jamais de note /100
+        // badges en mots sur les places recommandées de la section : un seul par place, jamais de note /100
         for (const [i, b] of this.hud.badges(this.section)) {
           if (i === this.seat) continue;
           L.push({ id: `bd${i}`, pos: new THREE.Vector3(v.px[i], v.py[i] + 1.3, v.pz[i]), text: esc(BADGE_TEXT[b]), kind: 'badge', act: `select:${i}`, prio: 4, maxDist: 160 });
@@ -684,7 +684,7 @@ export class App {
   }
 
   /**
-   * Ciblage tactile (§19–21) : recherche dans un rayon de 18 à 28 px selon la densité apparente des places
+   * Ciblage tactile : recherche dans un rayon de 18 à 28 px selon la densité apparente des places
    * (taille d'un siège à l'écran), la taille de l'écran et le type de saisie. Classement : proximité au doigt,
    * visibilité (première surface touchée), place libre, orientation vers la caméra, continuité (même section, même rang),
    * qualité. Le meilleur candidat est choisi (sélection « aimantée ») ; si plusieurs se valent, la bande de candidats
@@ -732,7 +732,7 @@ export class App {
   }
 
   onTap(x: number, y: number, touch: boolean) {
-    // un toucher qui fait réapparaître l'interface masquée ne sélectionne rien (§13, §15)
+    // un toucher qui fait réapparaître l'interface masquée ne sélectionne rien
     if (this.wokeUi) { this.wokeUi = false; return; }
     if (this.hud.stripOpen) { this.hud.closeEnvStrip(false); return; }
     if (this.panel && this.layout !== 'desktop') { this.closePanel(); return; }
@@ -771,7 +771,7 @@ export class App {
   }
 
   /**
-   * Double toucher contextuel (§23) : vue d'ensemble → section ; section / place → entrer dans la place.
+   * Double toucher contextuel : vue d'ensemble → section ; section / place → entrer dans la place.
    * En vue siège, le double toucher ne déplace jamais (conflit avec le regard et le toucher de visée).
    */
   onDoubleTap(x: number, y: number, touch: boolean) {
@@ -783,7 +783,7 @@ export class App {
     }
   }
 
-  /** Appui long sur une place (§24) : aperçu (place, prix, vue) ; relâcher le referme ; toucher sélectionne. */
+  /** Appui long sur une place : aperçu (place, prix, vue) ; relâcher le referme ; toucher sélectionne. */
   onLongPress(x: number, y: number) {
     if (!this.ready || this.split || this.wokeUi) return;
     const m = this.modes.mode;
@@ -965,12 +965,12 @@ export class App {
     if (m !== 'pov' && m !== 'move' && m !== 'compare') this.modes.go('pov'); else this.render();
     this.pref.note(this.ctx(), i, 1);
     announce(`Vue siège. ${seatSpeech(this.ctx(), i)}`);
-    // une seule fois par session, sur téléphone en portrait : la vue est plus large en paysage (§32)
+    // une seule fois par session, sur téléphone en portrait : la vue est plus large en paysage
     if (this.layout === 'mobile' && !sessionGet('rotateHint', false) && !this.opts.capture && !this.opts.record) {
       sessionSet('rotateHint', true);
       window.setTimeout(() => this.hint('Tournez le téléphone pour une vue plus large.', 3200), 1600);
     }
-    // plein écran : seulement si la personne l'a choisi pendant la session, et dans le geste qui l'autorise (§33)
+    // plein écran : seulement si la personne l'a choisi pendant la session, et dans le geste qui l'autorise
     if (this.fullscreenPref && this.touch && !this.isFullscreen()) this.setFullscreen(true);
     this.syncUrl();
     this.track('pov', seatId(v, i));
@@ -1006,7 +1006,7 @@ export class App {
     this.track('switch', seatId(v, i));
   }
 
-  /** Historique de session : 5 dernières places visitées (§70). */
+  /** Historique de session : 5 dernières places visitées. */
   private noteRecent(i: number) {
     this.recent = [i, ...this.recent.filter((x) => x !== i)].slice(0, 6);
   }
@@ -1037,7 +1037,7 @@ export class App {
   }
 
   overview() {
-    // une comparaison en cours n'est jamais détruite par un retour à la vue d'ensemble (§72) : elle est mise de côté
+    // une comparaison en cours n'est jamais détruite par un retour à la vue d'ensemble : elle est mise de côté
     if (this.modes.mode === 'compare' && this.compareA >= 0 && this.compareB >= 0) this.parked = { a: this.compareA, b: this.compareB };
     this.resetSelection(true);
     this.e.seatNumbers?.focus(-1);
@@ -1090,7 +1090,7 @@ export class App {
     this.updateSecondary();
   }
 
-  /** Seconde vue : côte à côte sur demande (bureau), incrustation de l'autre place sur téléphone (§66–67). */
+  /** Seconde vue : côte à côte sur demande (bureau), incrustation de l'autre place sur téléphone. */
   updateSecondary() {
     const m = this.modes.mode;
     const other = this.compareView === 'a' ? this.compareB : this.compareA;
@@ -1151,7 +1151,7 @@ export class App {
     this.nearbyCache.clear();
     this.renderTop();
     if (this.panel === 'env' || this.panel === 'pov') this.renderPanel();
-    // la place et la caméra ne bougent pas : comparaison des conditions à place égale (§99–100)
+    // la place et la caméra ne bougent pas : comparaison des conditions à place égale
     if (!instant) this.hud.envFlash(envLabel(this));
     window.setTimeout(() => { if (this.modes.mode === 'seat') this.renderCard(); this.hud.renderFacts(true); }, instant ? 0 : 120);
   }
@@ -1300,7 +1300,7 @@ export class App {
       if (t.dataset.input === 'time') { this.e.setTime(+t.value, true, true); this.nearbyCache.clear(); }
     });
     this.el.rvSkip.addEventListener('click', () => this.reveal.skip());
-    // « Jumelles » : maintenir pour zoomer ×3, relâcher pour revenir (§65) ; au clavier, Espace / Entrée maintenus
+    // « Jumelles » : maintenir pour zoomer ×3, relâcher pour revenir ; au clavier, Espace / Entrée maintenus
     let held = 0;
     const holdOn = (t: EventTarget | null) => { if ((t as HTMLElement)?.closest?.('[data-hold="binoculars"]') && !held) { held = this.d.zoom || 1; this.d.setZoom(3); this.interacted(); } };
     const holdOff = () => { if (held) { this.d.setZoom(held); held = 0; } };
@@ -1308,7 +1308,7 @@ export class App {
     for (const ev of ['pointerup', 'pointercancel', 'pointerleave'] as const) this.el.app.addEventListener(ev, holdOff);
     this.el.app.addEventListener('keydown', (e) => { if ((e.key === ' ' || e.key === 'Enter') && !e.repeat) holdOn(e.target); });
     this.el.app.addEventListener('keyup', (e) => { if (e.key === ' ' || e.key === 'Enter') holdOff(); });
-    // retour long sur « Retour » : places récentes (§70)
+    // retour long sur « Retour » : places récentes
     this.el.top.addEventListener('contextmenu', (e) => { if ((e.target as HTMLElement).closest('[data-act="back"]')) { e.preventDefault(); this.openPanel('where', e.target as HTMLElement); } });
     this.e.quality.lite ||= sessionGet('lite', false) || new URLSearchParams(location.search).get('lite') === '1';
     addEventListener('keydown', (e) => this.onKey(e));
@@ -1406,7 +1406,7 @@ export class App {
   onLabToggle: (() => void) | null = null;
   onCustomAct: ((name: string, arg: string) => void) | null = null;
 
-  /** Perspective (§63) : la vue courante seule est montrée ; les autres sont dans « Vue ». */
+  /** Perspective : la vue courante seule est montrée ; les autres sont dans « Vue ». */
   setPerspective(k: string) {
     if (k === 'pitch') { this.closePanel(); this.anchor('center'); return; }
     if (k === 'aerial') { this.closePanel(); this.anchor('aerial'); return; }
@@ -1418,7 +1418,7 @@ export class App {
     announce(k === 'wide' ? 'Champ large' : k === 'standing' ? 'Debout' : 'Vue naturelle, assis');
   }
 
-  /** Échelle (§62) : distance au terrain et repères sur quelques joueurs, puis tout disparaît. */
+  /** Échelle : distance au terrain et repères sur quelques joueurs, puis tout disparaît. */
   private scaleTimer = 0;
   showScale() {
     const p = this.e.players;

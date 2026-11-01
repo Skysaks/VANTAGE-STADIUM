@@ -1,5 +1,5 @@
 /**
- * Feuille mobile à crans proportionnels à la hauteur utile (§34) : téléphones hauts 15 / 38 / 72 %,
+ * Feuille mobile à crans proportionnels à la hauteur utile : téléphones hauts 15 / 38 / 72 %,
  * plus courts 18 / 44 / 78 % ; en texte agrandi, crans plus hauts (le prix et l'action ne sont jamais coupés). Glisser la poignée ou l'en-tête ; un geste rapide passe au cran suivant.
  * Accessible : la poignée est un bouton (Entrée / Espace = cran suivant, Échap = réduire).
  */

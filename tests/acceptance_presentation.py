@@ -1,5 +1,5 @@
 """
-Parcours d'acceptation §111 (brief « Presentation Ready ») sur la construction de présentation, en une seule session,
+Parcours d'acceptation de la présentation sur la construction de présentation, en une seule session,
 sans rechargement, uniquement par l'interface (clics, clavier, gestes) sauf pour LIRE l'état.
 Usage : python3 tests/acceptance_presentation.py [dossier_captures]
 """

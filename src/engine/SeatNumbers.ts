@@ -3,7 +3,7 @@ import type { VenueModel } from '../venue/model';
 import { textAtlas, atlasPlanes } from './Details';
 
 /**
- * Numéros de sièges lisibles et marquages de rang, uniquement autour de la place occupée (§86) :
+ * Numéros de sièges lisibles et marquages de rang, uniquement autour de la place occupée :
  * jamais 50 000 textures, au plus ~120 plaques instanciées, mises à jour quand la place change.
  */
 export class SeatNumbers {

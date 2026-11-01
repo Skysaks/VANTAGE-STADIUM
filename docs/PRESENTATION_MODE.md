@@ -39,7 +39,7 @@ Aucun conflit avec les commandes ordinaires (flèches, Entrée, Échap, `M`, `C`
 
 ## Vitrine automatique
 
-Mode borne `?showcase=1` (relance après 60 s sans interaction) ou touche `O` : boucle 01 → 05 → nuit → 03 → 06 → 04 → 07. Toute saisie l'arrête immédiatement. Elle ne démarre **jamais** seule pendant une démonstration animée (un présentateur qui parle sans toucher l'écran ne doit pas être interrompu) : constat du test §111, où la vitrine s'était déclenchée pendant une attente.
+Mode borne `?showcase=1` (relance après 60 s sans interaction) ou touche `O` : boucle 01 → 05 → nuit → 03 → 06 → 04 → 07. Toute saisie l'arrête immédiatement. Elle ne démarre **jamais** seule pendant une démonstration animée (un présentateur qui parle sans toucher l'écran ne doit pas être interrompu) : constat du parcours d'acceptation, où la vitrine s'était déclenchée pendant une attente.
 
 ## Enregistrement
 
@@ -59,7 +59,7 @@ Mode borne `?showcase=1` (relance après 60 s sans interaction) ou touche `O` : 
 
 « Copier le lien » sérialise stade, place, mode de caméra et environnement ; ouvrir le lien reconstruit la vue.
 
-## Parcours d'acceptation §111
+## Parcours d'acceptation
 
 Automatisé par `tests/acceptance_presentation.py` (voir `tests/README.md`) : ouverture → rotation → tribune → place → vue siège → joueurs → trois places → rangs → comparaison → vue d'ensemble → Vantage Grand → nuit → pluie → place couverte → place exposée → but → Vantage Olympic → place lointaine → vue d'ensemble → révélation → contrôle immédiat. Une seule session, sans rechargement.
 

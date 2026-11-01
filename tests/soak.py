@@ -1,5 +1,5 @@
 """
-§109 — endurance : exploration continue des places pendant N minutes (15 par défaut) sur téléphone simulé.
+Endurance (M109) : exploration continue des places pendant N minutes (15 par défaut) sur téléphone simulé.
 Suit : images/s mesurées, échelle de résolution et profil de qualité choisis par le gestionnaire adaptatif,
 géométries et textures GPU, tas JavaScript. Sur GPU logiciel, seuls la mémoire et la stabilité ont un sens ;
 la thermique et les images/s réelles exigent un vrai téléphone (protocole dans docs/MOBILE_MICROHUD.md).

@@ -73,7 +73,7 @@ Tailles en `rem` : Normale / Grande (112,5 %) / Très grande (131 %), et zoom du
 
 ## Cibles tactiles
 
-44 × 44 px minimum sur mobile et tablette (HUD, dock, feuille, segments, puces, bande de candidats). Les petits boutons secondaires (40 px visibles) ont une zone tactile élargie à 46 px (§18). Sélection de place tolérante : rayon de 18 à 28 px selon la taille apparente des sièges, sélection aimantée, bande de candidats si plusieurs places se valent, appui long pour un aperçu.
+44 × 44 px minimum sur mobile et tablette (HUD, dock, feuille, segments, puces, bande de candidats). Les petits boutons secondaires (40 px visibles) ont une zone tactile élargie à 46 px. Sélection de place tolérante : rayon de 18 à 28 px selon la taille apparente des sièges, sélection aimantée, bande de candidats si plusieurs places se valent, appui long pour un aperçu.
 
 En texte agrandi, moins d'étiquettes dans le monde (3 sur téléphone, 6 sur bureau) et des crans de feuille plus hauts : le prix et l'action principale ne sont jamais coupés.
 

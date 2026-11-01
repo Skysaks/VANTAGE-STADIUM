@@ -31,7 +31,7 @@ export interface TopData {
 }
 
 /**
- * HUD haut, compressé (§45) : à gauche le stade (vue d'ensemble) ou le retour + une puce de position compacte qui
+ * HUD haut, compressé : à gauche le stade (vue d'ensemble) ou le retour + une puce de position compacte qui
  * révèle la hiérarchie au toucher ; à droite l'heure et la météo (puce qui ouvre la bande rapide). La puce de match
  * est un élément séparé (#evchip). Sur téléphone, « Plus » est en bas, dans la zone du pouce.
  */
@@ -50,7 +50,7 @@ export function topHud(d: TopData) {
       </div>
       <div class="th-right">${envChip}${sound}${more}</div>`;
   }
-  // logo = retour à la vue d'ensemble (§49) ; jamais un bouton « Accueil » de plus
+  // logo = retour à la vue d'ensemble ; jamais un bouton « Accueil » de plus
   const home = !phone ? `<button type="button" class="brand mini surface" data-act="home" aria-label="Vue d’ensemble du stade"><span class="mark">${icon('stadium', 18)}</span></button>` : '';
   const back = IB('back', d.mode === 'move' ? 'Terminer le déplacement' : 'Retour', 'back', 'surface');
   return `<div class="th-left">${home}${back}${ctx}</div>
@@ -88,7 +88,7 @@ export function seatCard(c: SeatCtx, i: number, o: CardOpts) {
   const cta = pov
     ? `<div class="cta-row">${B('compare', 'Comparer avec une autre place', 'compare', 'primary block')}</div>`
     : `<div class="cta-row">${B('pov', 'Voir depuis cette place', 'eye', 'primary block')}</div>`;
-  // priorité contextuelle (§52) : sous la pluie, l'abri passe devant la distance
+  // priorité contextuelle : sous la pluie, l'abri passe devant la distance
   const qs = o.rain ? [s.quick[2], s.quick[0], s.quick[1]] : s.quick;
   const quick = `<ul class="quick" aria-label="En bref">${qs.map((q) => `<li class="q ${q.tone}"><span class="k">${q.label}</span><span class="v">${esc(q.value)}</span></li>`).join('')}</ul>`;
   const obs = o.obstruction ? `<p class="obs">${icon('info', 14)}<span><strong>Gêne partielle</strong> · ${esc(o.obstruction)}</span></p>` : '';
@@ -110,7 +110,7 @@ export function seatCard(c: SeatCtx, i: number, o: CardOpts) {
 export function compareTray(c: SeatCtx, a: number, b: number, intent: Intent, view: 'a' | 'b', layout: string, nearby: Nearby[], x: { saved?: number[]; canSplit?: boolean; split?: boolean } = {}) {
   const ta = seatTitle(c, a);
   if (b < 0) {
-    // places enregistrées d'abord (§69), puis suggestions voisines
+    // places enregistrées d'abord, puis suggestions voisines
     const saved = (x.saved ?? []).filter((i) => i !== a).slice(0, 2).map((i) => B(`compareWith:${i}`, `${icon('bookmark', 14)} ${seatTitle(c, i).section} · ${seatTitle(c, i).short.replace('Rang ', 'R').replace(' · Place ', '·')}`, '', 'small ghost'));
     const sug = nearby.slice(0, 2).map((n) => B(`compareWith:${n.seat}`, `${seatTitle(c, n.seat).short} · ${eur(c.em.price[n.seat])}`, 'compare', 'small ghost'));
     const all = [...saved, ...sug].slice(0, 3).join('');
@@ -322,7 +322,7 @@ export function panelFavs(c: SeatCtx, favs: number[]) {
 
 export { relativePosition };
 
-/** Hiérarchie complète, révélée au toucher de la puce de position (§45) : chaque niveau est un raccourci. */
+/** Hiérarchie complète, révélée au toucher de la puce de position : chaque niveau est un raccourci. */
 export function panelWhere(c: SeatCtx, o: { venue: string; stand: number; section: number; seat: number; facts: Array<{ text: string; tone: string }>; recent: number[]; saved: boolean }) {
   const { v } = c;
   const rows: string[] = [`<button type="button" class="li" data-act="home">${icon('stadium')}<span class="t">${esc(o.venue)}</span><span class="d">Vue d’ensemble</span></button>`];
@@ -355,7 +355,7 @@ export function panelEvent(ev: { label: string; competition: string; home: { nam
     <p class="note">Match, équipes et score fictifs (simulation).</p>`;
 }
 
-/** Options de la vue siège : regarder, zoom (présenté comme tel), perspective, conditions à place égale (§63–65, §95–99). */
+/** Options de la vue siège : regarder, zoom (présenté comme tel), perspective, conditions à place égale. */
 export function panelPov(o: { follow: string; zoom: number; perspective: string; env: string; players: boolean; fullscreen: boolean | null }) {
   const seg = (name: string, cur: string, opts: Array<[string, string]>, act: string) =>
     `<div class="seg" role="radiogroup" aria-label="${name}">${opts.map(([v, l]) => `<button type="button" role="radio" aria-checked="${v === cur}" class="${v === cur ? 'on' : ''}" data-act="${act}:${v}">${l}</button>`).join('')}</div>`;

@@ -7,7 +7,7 @@ button, input, select { font: inherit; color: inherit; }
 .ic { flex: none; display: block; }
 kbd { font: 600 var(--fs-2xs) var(--font); padding: 2px 6px; border-radius: 6px; border: 1px solid var(--border-strong); color: var(--text-secondary); }
 
-/* hauteur visible réelle (barres d'outils mobiles, clavier) : 100dvh, jamais 100vh seul (§28) */
+/* hauteur visible réelle (barres d'outils mobiles, clavier) : 100dvh, jamais 100vh seul */
 #app { position: fixed; left: 0; right: 0; top: 0; height: 100%; height: 100dvh; overflow: hidden; touch-action: none; user-select: none; -webkit-user-select: none; container-type: inline-size; container-name: app; }
 #c { position: absolute; inset: 0; width: 100%; height: 100%; display: block; outline: none; touch-action: none; cursor: grab; }
 #c:active { cursor: grabbing; }
@@ -65,8 +65,8 @@ kbd { font: 600 var(--fs-2xs) var(--font); padding: 2px 6px; border-radius: 6px;
 #app[data-layout='landscape'] .dock .btn { flex-direction: column; gap: 2px; width: calc(var(--dock-h) - 12px); height: 56px; padding: 0; border-radius: var(--r-lg); font-size: 0.625rem; }
 #app[data-mode='reveal'] :is(.tophud, .dock, .minimap, .seatcard, .sheet, .world, .presenter, .evchip, .facts, .flash, .recenter, .undo, .zoomchip, .envstrip) { opacity: 0 !important; pointer-events: none !important; }
 
-/* niveaux d'interface (§13) : FULL → MINIMAL (≈ 3 s) → IMMERSIVE (≈ 6 s, vue siège) ; toute saisie revient à FULL.
-   Rien n'est masqué au clavier ni avec les réglages d'accessibilité (§14) : la classe n'est alors jamais posée. */
+/* niveaux d'interface : FULL → MINIMAL (≈ 3 s) → IMMERSIVE (≈ 6 s, vue siège) ; toute saisie revient à FULL.
+   Rien n'est masqué au clavier ni avec les réglages d'accessibilité : la classe n'est alors jamais posée. */
 .ui-min, .ui-full, .tophud > div > *, .dock .lbl { transition: opacity var(--t-slow) var(--ease-out); }
 #app[data-ui='minimal'] .ui-full, #app[data-ui='immersive'] .ui-full, #app[data-ui='immersive'] .ui-min, #app[data-ui='immersive'] .world { opacity: 0 !important; pointer-events: none !important; }
 #app[data-ui='minimal'] .evchip .tm, #app[data-ui='minimal'] .evchip .bar { display: none; }
@@ -464,7 +464,7 @@ input[type='range'] { width: 100%; accent-color: var(--accent); height: 28px; }
 .peek span { font-size: var(--fs-xs); color: var(--text-secondary); }
 .peek .s { color: var(--text-tertiary); font-size: var(--fs-2xs); }
 
-/* zoom présenté comme tel (§64) */
+/* zoom présenté comme tel */
 .zoomchip { position: absolute; z-index: var(--z-hud); left: 50%; transform: translateX(-50%); top: calc(var(--mt) + var(--hud-h) + 44px + var(--safe-t)); display: inline-flex; gap: 8px; align-items: center; height: 34px; padding: 0 12px; border-radius: var(--r-pill); font-size: var(--fs-xs); font-weight: 600; cursor: pointer; color: var(--text-primary); }
 .zoomchip[hidden] { display: none; }
 .zoomchip .r { color: var(--accent); }
@@ -509,46 +509,46 @@ input[type='range'] { width: 100%; accent-color: var(--accent); height: 28px; }
 .btn.hold { touch-action: none; }
 .btn.hold:active { background: var(--accent-soft); }
 
-/* zone du pouce : sur téléphone, les actions en bas ; le haut ne porte que le contexte (§16) */
+/* zone du pouce : sur téléphone, les actions en bas ; le haut ne porte que le contexte */
 #app[data-layout='mobile'][data-mode='seat'] .dock { display: none; }
 #app[data-layout='mobile'] .dock .btn { min-width: 0; }
 
-/* petites hauteurs (§35) : marges et libellés resserrés ; libellés lus par les lecteurs d'écran */
+/* petites hauteurs : marges et libellés resserrés ; libellés lus par les lecteurs d'écran */
 #app[data-short='1'][data-layout='mobile'] { --mt: 6px; --mb: 8px; --dock-h: 56px; }
 #app[data-short='1'][data-layout='mobile'] .dock .lbl { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 #app[data-short='1'] .sheet .story, #app[data-short='1'] .seatcard .story { display: none; }
 #app[data-short='1'][data-layout='landscape'] .seatcard .quick { gap: 4px; }
-/* très petites largeurs (§36) : trois actions + Plus, libellés courts */
+/* très petites largeurs : trois actions + Plus, libellés courts */
 #app[data-narrow='1'] .dock .btn { font-size: 0.625rem; padding: 0 2px; }
 #app[data-narrow='1'] .brand .lbl { max-width: 36vw; }
 
-/* largeur de conteneur (fenêtres redimensionnées, écran partagé, pliables) (§38) */
+/* largeur de conteneur (fenêtres redimensionnées, écran partagé, pliables) */
 @container app (max-width: 380px) { .evchip { max-width: 160px; } .cands .cand { min-width: 56px; padding: 0 8px; } }
 @container app (min-width: 600px) and (max-width: 900px) { .seatcard { width: min(var(--card-w), 46vw); } }
 
-/* nuit : interface moins lumineuse, jamais éblouissante (§108) */
+/* nuit : interface moins lumineuse, jamais éblouissante */
 #app[data-ambient='night'] { --text-primary: #e6ebf0; --surface: rgba(10, 12, 16, 0.82); }
 #app[data-ambient='night'][data-contrast='high'] { --text-primary: #f3f6f9; }
 
-/* zone tactile élargie sans grossir le visuel (§18) */
+/* zone tactile élargie sans grossir le visuel */
 #app[data-touch='1'] .btn.small, #app[data-touch='1'] .chip { position: relative; }
 #app[data-touch='1'] .slop::after, #app[data-touch='1'] .btn.small::after { content: ''; position: absolute; inset: -3px -2px; }
 
 /* téléphone : le stade d'abord ; le nom ne passe jamais à la ligne */
 .brand .lbl { white-space: nowrap; }
 .sheet[data-snap='0'] .eyebrow { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-/* téléphone en vue siège : puce de match compacte (score, minute) ; masquée en comparaison (la différence prime, §8) */
+/* téléphone en vue siège : puce de match compacte (score, minute) ; masquée en comparaison (la différence prime) */
 #app[data-layout='mobile'] .evchip .tm, #app[data-layout='landscape'] .evchip .tm { display: none; }
 #app[data-layout='mobile'][data-mode='compare'] .evchip, #app[data-layout='landscape'][data-mode='compare'] .evchip { display: none; }
 #app[data-layout='mobile'] .ctx, #app[data-layout='landscape'] .ctx { max-width: calc(100vw - 2 * var(--mx) - var(--hud-h) - 130px); overflow: hidden; text-overflow: ellipsis; padding: 0 10px; }
-/* téléphone en vue siège : dock à la taille de son contenu (le stade d'abord, §2) */
+/* téléphone en vue siège : dock à la taille de son contenu (le stade d'abord) */
 #app[data-layout='mobile']:is([data-mode='pov'], [data-mode='move']) .dock { left: 50%; right: auto; transform: translateX(-50%); }
 #app[data-layout='mobile'][data-mode='pov'] { --dock-h: 56px; }
 #app[data-layout='mobile']:is([data-mode='pov']) .dock .btn { flex: 0 0 auto; width: 56px; font-size: 0.625rem; padding: 0 2px; }
 #app[data-layout='mobile'][data-mode='pov'] .dock { padding: 6px 4px; gap: 2px; }
 #app[data-layout='mobile'][data-mode='pov'] .facts { padding: 3px 10px; }
 #app[data-layout='mobile'][data-mode='move'] .dock .btn { flex: 0 0 auto; width: 140px; }
-/* comparaison sur téléphone : plateau resserré (la différence d'abord, §8), le stade reste majoritaire (§2) */
+/* comparaison sur téléphone : plateau resserré (la différence d'abord), le stade reste majoritaire */
 #app[data-layout='mobile'] .comparetray { padding: 8px 10px 6px; }
 #app[data-layout='mobile'] .comparetray .seg { margin-bottom: 6px; }
 #app[data-layout='mobile'] .cmp-side { padding: 6px 10px; }
@@ -556,7 +556,7 @@ input[type='range'] { width: 100%; accent-color: var(--accent); height: 28px; }
 #app[data-layout='mobile'] .deltas { gap: 4px; }
 #app[data-layout='mobile'] .deltas li { padding: 2px 8px; font-size: var(--fs-xs); }
 #app[data-layout='mobile'] .verdict { margin: 6px 0 2px; font-size: var(--fs-xs); }
-/* lisibilité en plein soleil (§107) : les boutons et puces posés sur le stade gardent leur fond sombre
+/* lisibilité en plein soleil : les boutons et puces posés sur le stade gardent leur fond sombre
    (la variante .btn / .chip, déclarée après .surface, le rendait transparent au-dessus d'un ciel clair) */
 .btn.surface, .chip.surface { background: var(--surface); }
 .btn.surface:hover, .chip.surface:hover { background: color-mix(in srgb, var(--surface) 80%, white 8%); }

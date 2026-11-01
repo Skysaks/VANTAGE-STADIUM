@@ -1,5 +1,5 @@
 """
-§112 — captures de référence mobiles : 390 × 844 et 430 × 932 (10 écrans), 844 × 390 (vue siège, comparaison, révélation).
+Captures de référence mobiles (M112) : 390 × 844 et 430 × 932 (10 écrans), 844 × 390 (vue siège, comparaison, révélation).
 États déterministes (`__lab.state`), interface visible (niveau complet), animations figées au moment de la capture.
 Produit <dossier>/*.png, <dossier>/report.json et docs/mobile_reference.jpg (planche).
 """

@@ -57,9 +57,9 @@ Clavier : flèches, Entrée, Échap, `M` déplacer, `C` comparer, `I` infos, `B`
 | `docs/VENUE_CONFIG.md` | décrire un lieu ; les 5 archétypes ; règles de géométrie (valeur C) |
 | `docs/ENVIRONMENT_ENGINE.md` | heure, soleil, ciel, nuages, pluie sous les toits, humidité, projecteurs |
 | `docs/CAMERA_SYSTEM.md` | états, transitions selon l'écart, collisions, vision humaine, cadrage par encarts |
-| `docs/PRESENTATION_MODE.md` | présentateur, scénarios, vitrine, enregistrement, liens profonds, parcours §111 |
+| `docs/PRESENTATION_MODE.md` | présentateur, scénarios, vitrine, enregistrement, liens profonds, parcours d'acceptation |
 | `docs/PERFORMANCE.md` | budgets, gestionnaire adaptatif, mesures, matrice lieux × profils, mémoire |
-| `docs/MOBILE_MICROHUD.md` | addendum mobile et Micro-HUD : correspondance §1–114, décisions contestées, protocoles sur appareil réel |
+| `docs/MOBILE_MICROHUD.md` | exigences mobiles et Micro-HUD : grille M1–M114, décisions contestées, protocoles sur appareil réel |
 | `docs/ACCESSIBILITY.md` | WCAG 2.2 AA : clavier, lecteur d'écran, alternative 2D, mouvement, contraste, 200 % |
 | `docs/LICENSES.md` | audit des licences et des actifs, statut du code (salle blanche non stricte) |
 | `tests/README.md` | tous les tests et comment les lancer |

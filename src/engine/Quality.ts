@@ -11,7 +11,7 @@ export const PROFILES: Record<QualityProfile, QualitySettings> = {
 };
 export const PROFILE_ORDER: QualityProfile[] = ['ultra', 'high', 'balanced', 'low'];
 
-/** Palier d'appareil estimé (mémoire, cœurs, GPU déclaré) : fixe le plafond de densité de pixels (§77). */
+/** Palier d'appareil estimé (mémoire, cœurs, GPU déclaré) : fixe le plafond de densité de pixels. */
 export type DeviceTier = 'high' | 'mid' | 'low';
 export const TIER_DPR: Record<DeviceTier, number> = { high: 2, mid: 1.5, low: 1.2 };
 
@@ -26,7 +26,7 @@ export function estimateTier(gpu: string, touch: boolean): DeviceTier {
 }
 
 /**
- * Qualité adaptative, graduelle (§78, §81) : on agit d'abord sur la résolution interne du rendu 3D (×1 → ×0,85 → ×0,72),
+ * Qualité adaptative, graduelle : on agit d'abord sur la résolution interne du rendu 3D (×1 → ×0,85 → ×0,72),
  * l'interface reste nette ; seulement ensuite on descend d'un profil. Fenêtres de mesure de 2 s, hystérésis :
  * une fenêtre lente suffit pour réduire la résolution, deux pour changer de profil, quatre rapides pour remonter.
  */
@@ -37,7 +37,7 @@ export class QualityManager {
   tier: DeviceTier = 'mid';
   /** Échelle de résolution du rendu 3D (indépendante des px CSS de l'interface). */
   resScale = 1;
-  /** Mode léger (§82) : choisi par l'utilisateur ou demandé par « économie de données ». */
+  /** Mode léger : choisi par l'utilisateur ou demandé par « économie de données ». */
   lite = false;
   private acc = 0; private frames = 0; private slow = 0; private fast = 0;
   frameMs = 16; fps = 60;

@@ -109,7 +109,7 @@ with sync_playwright() as pw:
     P = Page(pw, mobile=True)
     P.js('__lab.state("seat", { venue: "arena", env: "day", freeze: false })'); P.idle(); P.wait(800)
     small = P.js('''[...document.querySelectorAll('#tophud button, #dock button, #sheet button')].filter(b => { const r = b.getBoundingClientRect(); const a = getComputedStyle(b, '::after'); const slop = a.content !== 'none' && a.position === 'absolute' ? Math.max(0, -2 * parseFloat(a.top || '0')) : 0; return r.width > 0 && (r.width < 43.5 || r.height + slop < 43.5); }).map(b => (b.getAttribute('aria-label') || b.textContent.trim()).slice(0, 24) + ' ' + Math.round(b.getBoundingClientRect().width) + '×' + Math.round(b.getBoundingClientRect().height))''')
-    check('mobile : cibles ≥ 44 px, zone tactile élargie comprise (§18)', not small, ', '.join(small))
+    check('mobile : cibles ≥ 44 px, zone tactile élargie comprise', not small, ', '.join(small))
     P.close()
     P = Page(pw, mobile=True, viewport={'width': 844, 'height': 390})
     P.js('__lab.state("seat", { venue: "arena", env: "day", freeze: false })'); P.idle(); P.wait(800)

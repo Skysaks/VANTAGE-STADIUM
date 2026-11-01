@@ -54,7 +54,7 @@ export class PitchLayer {
           c.arc(X(gx), Y((W / 2) * sz), 1 * sc, a0, a0 + Math.PI / 2); c.stroke();
         }
       }
-      // zones techniques (§90) : rectangles en pointillés devant les bancs, côté tribune principale
+      // zones techniques : rectangles en pointillés devant les bancs, côté tribune principale
       const main = v.stands.find((st) => st.kind === 'main') ?? v.stands[0];
       const mzz = main.side === 'N' ? -1 : 1;
       c.setLineDash([0.5 * sc, 0.35 * sc]);

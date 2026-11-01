@@ -1,4 +1,4 @@
-"""Mesure de départ : moteur reconstruit (état v2), avant les trois briefs. Usage : python3 tests/baseline.py <html> <outdir>"""
+"""Mesure de départ : moteur v2, avant les changements de la v3. Usage : python3 tests/baseline.py <html> <outdir>"""
 import json, sys, time, pathlib
 from playwright.sync_api import sync_playwright
 html, out = pathlib.Path(sys.argv[1]).resolve(), pathlib.Path(sys.argv[2])

@@ -7,13 +7,13 @@ import { esc, icon, announce } from '../ui/dom';
 import { fmtTime, envIcon } from '../ui/views';
 import { viewLabel } from '../venue/metrics';
 
-/** Niveaux d'interface (§13) : FULL après une interaction, MINIMAL après ~3 s, IMMERSIVE après ~6 s en vue siège. */
+/** Niveaux d'interface : FULL après une interaction, MINIMAL après ~3 s, IMMERSIVE après ~6 s en vue siège. */
 export type UiLevel = 'full' | 'minimal' | 'immersive';
 
 const MATCH_FLASH: Partial<Record<MatchState, string>> = { corner: 'Corner', freekick: 'Coup franc', penalty: 'Penalty', kickoff: 'Coup d’envoi', halftime: 'Mi-temps' };
 
 /**
- * Micro-HUD : quelques puces contextuelles, jamais un tableau de bord (§3, §113).
+ * Micro-HUD : quelques puces contextuelles, jamais un tableau de bord.
  *  • une puce de match (optionnelle, repliée en vue siège après inactivité) ;
  *  • une puce d'environnement (heure, météo) qui ouvre une bande rapide Soleil / Coucher / Nuit / Pluie ;
  *  • une puce de position compacte (« 104 · R7 · P18 ») qui révèle la hiérarchie au toucher ;
@@ -23,7 +23,7 @@ const MATCH_FLASH: Partial<Record<MatchState, string>> = { corner: 'Corner', fre
 export class Hud {
   level: UiLevel = 'full';
   forcedImmersive = false;
-  /** Dernière saisie au clavier : on ne masque alors rien automatiquement (§14). */
+  /** Dernière saisie au clavier : on ne masque alors rien automatiquement. */
   keyboardNav = false;
   showEvent = true;
   private flashUntil = 0; private flashPrio = 0; private flashTimer = 0;
@@ -59,7 +59,7 @@ export class Hud {
       if (k === 'more') { this.closeEnvStrip(false); app.openPanel('env', el.top.querySelector<HTMLElement>('.env-chip')); return; }
       app.quickEnv(k);
       this.renderEnvStrip();
-      // l'état est appliqué, les commandes restent ~1,5 s puis se replient (§101)
+      // l'état est appliqué, les commandes restent ~1,5 s puis se replient
       clearTimeout(this.stripTimer);
       this.stripTimer = window.setTimeout(() => this.closeEnvStrip(true), 1500);
     });
@@ -135,7 +135,7 @@ export class Hud {
   private eventVisible() {
     const a = this.app, m = a.modes.mode;
     if (!this.showEvent || a.opts.capture || m === 'reveal' || !a.e.players) return false;
-    // exploration du lieu (calques de couleur, vue éclatée) : le match n'est pas le sujet (§5)
+    // exploration du lieu (calques de couleur, vue éclatée) : le match n'est pas le sujet
     if (a.heat !== 'stand' || a.e.explode > 0.5) return false;
     return m === 'overview' || m === 'pov' || m === 'move' || m === 'compare';
   }
@@ -180,7 +180,7 @@ export class Hud {
     a.openPanel(a.panel === 'event' ? null : 'event', a.el.evchip);
   }
 
-  /** Changement d'état du jeu : petite notification (§56). Le but s'affiche d'abord sur les écrans du stade (§57). */
+  /** Changement d'état du jeu : petite notification. Le but s'affiche d'abord sur les écrans du stade. */
   onMatchState(s: MatchState) {
     const t = MATCH_FLASH[s];
     if (t && this.app.modes.mode !== 'reveal') this.flash(t, 1500, 3);
@@ -207,7 +207,7 @@ export class Hud {
     this.flashTimer = window.setTimeout(() => { f.classList.remove('on'); this.flashPrio = 0; }, ms);
   }
 
-  /** Ambiance en cours de transition (§51) : « Coucher de soleil », « Pluie »… jusqu'à la fin, puis effacement. */
+  /** Ambiance en cours de transition : « Coucher de soleil », « Pluie »… jusqu'à la fin, puis effacement. */
   envFlash(label: string) {
     const env = this.app.e.env;
     this.envFlashOn = true;
@@ -263,7 +263,7 @@ export class Hud {
     this.factDetail = !this.factDetail;
     this.renderFacts();
     announce(`${f.text}. ${f.detail}`);
-    // poteau : on montre la source en tournant la tête vers lui (§61)
+    // poteau : on montre la source en tournant la tête vers lui
     if (this.factDetail && a.seat >= 0 && a.e.statics!.obsSrc[a.seat] === 3) {
       const v = a.e.venue!, st = v.stands[v.stand[a.seat]];
       let best: { x: number; z: number; y1: number } | null = null, bd = 1e9;
@@ -425,7 +425,7 @@ export class Hud {
     this.placePip();
   }
 
-  /** « Recentrer » n'apparaît que lorsqu'on s'est écarté du cadrage naturel (§48). */
+  /** « Recentrer » n'apparaît que lorsqu'on s'est écarté du cadrage naturel. */
   private checkRecenter() {
     const a = this.app, d = a.d, m = a.modes.mode;
     let show = false;
@@ -450,7 +450,7 @@ export class Hud {
 
   // ------------------------------------------------------------------ incrustation (comparaison mobile)
 
-  /** Place l'incrustation B dans le coin qui ne masque ni le ballon, ni le centre du terrain, ni les commandes (§68). */
+  /** Place l'incrustation B dans le coin qui ne masque ni le ballon, ni le centre du terrain, ni les commandes. */
   placePip() {
     const a = this.app, e = a.e, sec = e.secondary, el = a.el.pip;
     if (!sec || sec.mode !== 'pip') { el.hidden = true; this.pipCorner = -1; return; }

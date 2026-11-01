@@ -66,7 +66,7 @@ La constante `__BUILD__` est remplacée à la construction ; les branches mortes
 
 ## Choix contesté : pas de React
 
-Le brief UI v1.0 parle d'état « React » séparé du rendu. Nous avons gardé du TypeScript sans framework :
+La spécification UI v1.0 envisageait un état géré par React, séparé du rendu. Le choix retenu est du TypeScript sans framework :
 
 - **pour** : ~25 surfaces d'interface seulement, toutes pilotées par une machine d'états ; une délégation d'événements unique (`data-act`) ; aucun coût de réconciliation ; fichier unique plus léger (React + ReactDOM ≈ 140 Ko) ; l'exigence réelle — « l'interface ne se redessine pas à chaque image » — est respectée par construction ;
 - **contre** : pas d'écosystème de composants, tests unitaires d'interface plus artisanaux, montée en charge d'équipe moins évidente ;

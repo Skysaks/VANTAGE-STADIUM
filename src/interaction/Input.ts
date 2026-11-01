@@ -23,9 +23,9 @@ interface Down {
   vx: number; vy: number; accX: number; accY: number; axis: 'x' | 'y' | null; edge: boolean; long: boolean; timer: number;
 }
 
-/** Marge des bords réservée aux gestes du système (retour iOS, barre de gestes) : aucun geste personnalisé n'y commence (§27). */
+/** Marge des bords réservée aux gestes du système (retour iOS, barre de gestes) : aucun geste personnalisé n'y commence. */
 const EDGE = 22;
-/** Distance minimale avant de décider d'un axe, et confiance exigée (rapport axe dominant / axe secondaire) (§25). */
+/** Distance minimale avant de décider d'un axe, et confiance exigée (rapport axe dominant / axe secondaire). */
 const AXIS_MIN = 14, AXIS_CONF = 1.6;
 
 /**
@@ -114,7 +114,7 @@ export class Input {
       this.dir.lookBy(-dx * gain, dy * gain * 0.85, this.el.clientHeight);
     } else if (m === 'move' && d.moved && !d.edge) {
       const tx = e.clientX - d.x, ty = e.clientY - d.y;
-      // axe décidé seulement quand il est net, puis verrouillé pour tout le geste (§25–26)
+      // axe décidé seulement quand il est net, puis verrouillé pour tout le geste
       if (!d.axis) {
         const ax = Math.abs(tx), ay = Math.abs(ty);
         if (Math.max(ax, ay) < AXIS_MIN) return;

@@ -60,7 +60,7 @@
 #app[data-layout='mobile'] { --mx: 12px; --mt: 10px; --mb: 12px; --hud-h: 44px; --dock-h: 64px; --target: 44px; --mini-w: 112px; --mini-h: 80px; }
 #app[data-layout='landscape'] { --mx: 12px; --mt: 8px; --mb: 8px; --hud-h: 44px; --dock-h: 64px; --target: 44px; --card-w: 300px; --mini-w: 112px; --mini-h: 80px; }
 #app[data-touch='1'] { --target: 44px; }
-/* tablette tactile : logique mobile, gabarit spacieux (§37) */
+/* tablette tactile : logique mobile, gabarit spacieux */
 #app[data-device='tablet'] { --hud-h: 44px; --dock-h: 64px; --mx: 20px; }
 
 /* contraste élevé : surfaces opaques, bordures franches, textes secondaires éclaircis */

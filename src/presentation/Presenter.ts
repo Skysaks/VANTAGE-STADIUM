@@ -144,7 +144,7 @@ export class Presenter {
     }
   }
 
-  // ---------- séquence d'enregistrement déterministe (≈ 40 s, §97) ----------
+  // ---------- séquence d'enregistrement déterministe (≈ 40 s) ----------
 
   async recordSequence() {
     const a = this.app;
